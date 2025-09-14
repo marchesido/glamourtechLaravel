@@ -10,12 +10,14 @@
     <a href="{{ route('produtos.create') }}" class="btn btn-primary mb-3">Novo Produto</a>
 
     <table class="table table-bordered">
+        
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Preço</th>
                 <th>Estoque</th>
+                <th>Categoria</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -26,6 +28,7 @@
                     <td>{{ $produto->nome }}</td>
                     <td>R$ {{ number_format($produto->preco, 2, ',', '.') }}</td>
                     <td>{{ $produto->estoque }}</td>
+                    <td>{{$produto->categoria? $produto->categoria->nome:'-' }}</td>
                     <td>
                         <a href="{{ route('produtos.show', $produto) }}" class="btn btn-sm btn-info">Ver</a>
                         <a href="{{ route('produtos.edit', $produto) }}" class="btn btn-sm btn-warning">Editar</a>
