@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ItensPedidoController;
+use App\Http\Controllers\PedidoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 /*
@@ -20,3 +22,5 @@ Route::get('/', function () {
 
 Route::resource('produtos', ProdutoController::class);
 Route::resource('categorias', CategoriaController::class);
+Route::resource('pedidos', PedidoController::class);
+Route::resource('itens-pedidos', ItensPedidoController::class);
