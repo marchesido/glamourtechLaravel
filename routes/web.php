@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProdutoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\HomeController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\ProdutoController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('produtos', ProdutoController::class);
+Route::resource('adminProdutos', AdminProdutoController::class);
 Route::resource('categorias', CategoriaController::class);
 Route::resource('pedidos', PedidoController::class);
 Route::resource('itens-pedidos', ItensPedidoController::class);
