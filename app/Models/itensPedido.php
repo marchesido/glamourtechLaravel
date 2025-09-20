@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class itensPedido extends Model
 {
-    use HasFactory;protected $table = 'pedidos';
+    use HasFactory;protected $table = 'itens_pedidos';
     protected $primaryKey = 'id'; // padrão, mas você pode declarar
 
     public $incrementing = true; // padrão, mas pode alterar

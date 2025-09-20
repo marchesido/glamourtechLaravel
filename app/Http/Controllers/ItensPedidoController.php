@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\itensPedido;
+use App\Models\Pedido;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class ItensPedidoController extends Controller
@@ -14,7 +16,8 @@ class ItensPedidoController extends Controller
      */
     public function index()
     {
-        //
+        $itensPedidos = itensPedido::all();
+        return view('itens-pedidos.index', compact('itensPedidos'));
     }
 
     /**
@@ -24,7 +27,10 @@ class ItensPedidoController extends Controller
      */
     public function create()
     {
-        //
+        $pedidos = Pedido::all();
+
+        $produtos = Produto::all();
+        return view('itens-pedidos.create', compact('produtos', 'pedidos'));
     }
 
     /**
@@ -35,7 +41,17 @@ class ItensPedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'preco' => 'required|numeric',
+            'quantidade' => 'required|integer',
+            'pedido_id' => 'required|integer',
+            'produto_id' => 'required|integer'
+         ]);
+
+         itensPedido::create($request->all());
+
+         return redirect()->route('itens-pedidos.index')
+                         ->with('success', 'Itens pedidos criados com sucesso!');
     }
 
     /**
@@ -46,7 +62,7 @@ class ItensPedidoController extends Controller
      */
     public function show(itensPedido $itensPedido)
     {
-        //
+        return view('itens-pedidos.show', compact('produtos', 'pedidos', 'itensPedido'));
     }
 
     /**
@@ -57,7 +73,10 @@ class ItensPedidoController extends Controller
      */
     public function edit(itensPedido $itensPedido)
     {
-        //
+        $pedidos = Pedido::all();
+
+        $produtos = Produto::all();
+        return view('itens-pedidos.edit', compact('produtos', 'pedidos', 'itensPedido'));
     }
 
     /**
@@ -69,7 +88,17 @@ class ItensPedidoController extends Controller
      */
     public function update(Request $request, itensPedido $itensPedido)
     {
-        //
+        $request->validate([
+            'preco' => 'required|numeric',
+            'quantidade' => 'required|integer',
+            'pedido_id' => 'required|integer',
+            'produto_id' => 'required|integer',
+        ]);
+
+        $itensPedido->update($request->all());
+
+        return redirect()->route('produtos.index')
+                         ->with('success', 'Produto atualizado com sucesso!');
     }
 
     /**
@@ -80,6 +109,9 @@ class ItensPedidoController extends Controller
      */
     public function destroy(itensPedido $itensPedido)
     {
-        //
+        $itensPedido->delete();
+
+        return redirect()->route('itens-pedidos.index')
+                         ->with('success', 'itens do pedido excluído com sucesso!');
     }
 }
