@@ -1,65 +1,85 @@
-.navbar {
-  background: #090a0a;
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+   html,
+   body {
+       height: 100%;
+   }
 
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-}
+   body {
+       display: flex;
+       flex-direction: column;
+   }
 
-.navbar-brand img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  display: block;
-}
+   main {
 
-.navbar-toggler {
-  background-color: #000000;
-  display: flex;
-  align-items: center;
-  padding: 0.375rem 0.75rem;
-  border: none;
-  box-shadow: none;
-  height: 50px;
-}
+       flex: 1;
+   }
 
-.custom-footer {
-  background-color: #ffd7d5;
-}
-.custom-footer a {
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.custom-footer a:hover {
-  color: #ff453c;
-}
-.custom-footer p {
-  margin-bottom: 0.25rem;
-}
+   .navbar {
+       background: #090a0a;
+       padding: 20px;
+       box-sizing: border-box;
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+   }
 
-.card {
-  margin-bottom: 5px;
-  box-shadow: 0 0 10px #CCC;
-  text-align: center;
-  height: 100%;
-}
-.card .card-img-top {
-  height: 200px;
-  object-fit: cover;
-  width: 100%;
-}
-.card .card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+   .navbar-brand {
+       display: flex;
+       align-items: center;
+       padding: 0;
+       margin: 0;
+   }
 
-/*# sourceMappingURL=style.css.map */
+   .navbar-brand img {
+       width: 50px;
+       height: 50px;
+       object-fit: contain;
+       display: block;
+   }
+
+   .navbar-toggler {
+       background-color: #000000;
+       display: flex;
+       align-items: center;
+       padding: 0.375rem 0.75rem;
+       border: none;
+       box-shadow: none;
+       height: 50px;
+   }
+
+   .custom-footer {
+       background-color: #ffd7d5;
+   }
+
+   .custom-footer a {
+       text-decoration: none;
+       transition: color 0.3s ease;
+   }
+
+   .custom-footer a:hover {
+       color: #ff453c;
+   }
+
+   .custom-footer p {
+       margin-bottom: 0.25rem;
+   }
+
+   .card {
+       margin-bottom: 5px;
+       box-shadow: 0 0 10px #CCC;
+       text-align: center;
+       height: 100%;
+   }
+
+   .card .card-img-top {
+       height: 200px;
+       object-fit: cover;
+       width: 100%;
+   }
+
+   .card .card-body {
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+   }
+
+   /*# sourceMappingURL=style.css.map */
