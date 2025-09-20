@@ -14,7 +14,7 @@ class AdminProdutoController extends Controller
     public function index()
     {
         $produtos = Produto::all();
-        return view('adminProdutos.index', compact('produtos'));
+        return view('admin-produtos.index', compact('produtos'));
     }
 
     /**
@@ -23,7 +23,7 @@ class AdminProdutoController extends Controller
     public function create()
     {
         $categorias = Categoria::all();
-        return view('adminProdutos.create', compact('categorias'));
+        return view('admin-produtos.create', compact('categorias'));
     }
 
     /**
@@ -41,7 +41,7 @@ class AdminProdutoController extends Controller
 
         Produto::create($request->all());
 
-        return redirect()->route('adminProdutos.index')
+        return redirect()->route('admin-produtos.index')
                          ->with('success', 'Produto criado com sucesso!');
     }
 
@@ -50,7 +50,7 @@ class AdminProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        return view('adminProdutos.show', compact('produto'));
+        return view('admin-produtos.show', compact('produto'));
     }
 
     /**
@@ -59,7 +59,7 @@ class AdminProdutoController extends Controller
     public function edit(Produto $produto)
     {
          $categorias = Categoria::all();
-        return view('adminProdutos.edit', compact('produto','categorias'));
+        return view('admin-produtos.edit', compact('produto','categorias'));
     }
 
     /**
@@ -77,7 +77,7 @@ class AdminProdutoController extends Controller
 
         $produto->update($request->all());
 
-        return redirect()->route('adminProdutos.index')
+        return redirect()->route('admin-produtos.index')
                          ->with('success', 'Produto atualizado com sucesso!');
     }
 
@@ -88,7 +88,7 @@ class AdminProdutoController extends Controller
     {
         $produto->delete();
 
-        return redirect()->route('adminProdutos.index')
+        return redirect()->route('admin-produtos.index')
                          ->with('success', 'Produto excluído com sucesso!');
     }
 }
