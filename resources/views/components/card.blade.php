@@ -1,6 +1,6 @@
 <div class="col">
     <div class="card h-100">
-        <img src="{{ $produto -> image }}" class="produto-img-top" alt="{{ $produto -> nome }}" style="object-fit: fill;">
+        <img src="{{ $produto -> img_url }}" class="produto-img-top" alt="{{ $produto -> nome }}" style="object-fit: fill;">
         <div class="produto-body">
             <h5 class="produto-title">{{ $produto -> nome }}</h5>
             <p class="produto-text">{{ $produto -> descricao }}</p>
