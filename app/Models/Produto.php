@@ -21,6 +21,7 @@ class Produto extends Model
         'preco',
         'estoque',
         'categoria_id',
+        'img_url',
     ];
 
     public function categoria(): BelongsTo
