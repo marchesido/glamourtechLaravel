@@ -7,7 +7,7 @@
 <div class="container py-5">
     <div class="row align-items-center">
         <div class="col-md-6 mb-4 mb-md-0">
-            <img src="{{ asset('storage/' . $produto->img_url) }}" class="img-fluid rounded shadow" alt="{{ $produto->nome }}">
+            <img src="{{ asset('uploads/' . $produto->img_url) }}" class="img-fluid rounded shadow" alt="{{ $produto->nome }}">
         </div>
         <div class="col-md-6">
             <h2 class="mb-4">{{$produto->nome }}</h2>

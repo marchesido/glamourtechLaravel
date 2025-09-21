@@ -8,7 +8,7 @@
         <!-- Coluna da Imagem -->
         <div class="col-md-4 text-center">
             @if($produto->img_url)
-                <img src="{{ asset('storage/' . $produto->img_url) }}" class="img-fluid rounded-start" alt="{{ $produto->nome }}">
+                <img src="{{ asset('uploads/' . $produto->img_url) }}" class="img-fluid rounded-start" alt="{{ $produto->nome }}">
             @else
                 <img src="https://via.placeholder.com/300x300?text=Sem+Imagem" class="img-fluid rounded-start" alt="Sem imagem">
             @endif
