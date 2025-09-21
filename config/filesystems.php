@@ -39,7 +39,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root'   => public_path('uploads'), // salva dentro de public/uploads
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL').'/uploads',
             'visibility' => 'public',
             'throw' => false,
         ],
