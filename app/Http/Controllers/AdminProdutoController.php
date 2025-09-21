@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProdutoController extends Controller
 {
@@ -36,10 +37,16 @@ class AdminProdutoController extends Controller
             'descricao' => 'nullable|string',
             'preco' => 'required|numeric',
             'estoque' => 'required|integer',
-            'categoria_id' => 'nullable|exists:categorias,id'
+            'categoria_id' => 'nullable|exists:categorias,id',
+            'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
 
-        Produto::create($request->all());
+          $dados = $request->only(['nome', 'descricao', 'preco', 'estoque', 'categoria_id']);
+   if ($request->hasFile('img_url')) {
+        $dados['img_url'] = $request->file('img_url')->store('produtos', 'public');
+    }
+        Produto::create($dados);
 
         return redirect()->route('admin-produtos.index')
                          ->with('success', 'Produto criado com sucesso!');
@@ -72,10 +79,18 @@ class AdminProdutoController extends Controller
             'descricao' => 'nullable|string',
             'preco' => 'required|numeric',
             'estoque' => 'required|integer',
-            'categoria_id' => 'nullable|exists:categorias,id'
+            'categoria_id' => 'nullable|exists:categorias,id',
+              'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        $produto->update($request->all());
+        $dados = $request->only(['nome', 'descricao', 'preco', 'estoque', 'categoria_id']);
+        if ($request->hasFile('img_url')) {
+      // Excluir imagem antiga, se existir
+        if ($produto->img_url && Storage::disk('public')->exists($produto->img_url)) {
+            Storage::disk('public')->delete($produto->img_url);
+        }
+        $dados['img_url'] = $request->file('img_url')->store('produtos', 'public');
+    }
+        $produto->update($dados);
 
         return redirect()->route('admin-produtos.index')
                          ->with('success', 'Produto atualizado com sucesso!');
