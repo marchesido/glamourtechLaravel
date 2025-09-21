@@ -15,7 +15,7 @@
 </div>
 @endif
 
-<form action="{{ route('admin-produtos.update', $produto->id) }}" method="POST">
+<form action="{{ route('admin-produtos.update', $produto->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -47,11 +47,24 @@
         <select class="form-control" name="categoria_id">
             <option value="">Selecione a categoria</option>
             @foreach ($categorias as $categoria)
-            <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
+            <option value="{{ $categoria->id }}" {{ old('categoria_id', $produto->categoria_id) == $categoria->id ? 'selected' : '' }}>
                 {{ $categoria->nome }}
             </option>
             @endforeach
         </select>
+    </div>
+
+    @if($produto->img_url)
+    <div class="mb-3">
+        <label class="form-label">Imagem atual:</label><br>
+        <img src="{{ asset('storage/' . $produto->img_url) }}" alt="{{ $produto->nome }}" style="max-width: 200px; height: auto;">
+    </div>
+    @endif
+
+    {{-- Campo para alterar a imagem --}}
+    <div class="mb-3">
+        <label for="img_url" class="form-label">Alterar Imagem</label>
+        <input type="file" name="img_url" class="form-control" accept="image/*">
     </div>
 
     <button type="submit" class="btn btn-primary">Atualizar</button>

@@ -15,7 +15,7 @@
 </div>
 @endif
 
-<form action="{{ route('admin-produtos.store') }}" method="POST">
+<form action="{{ route('admin-produtos.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="mb-3">
@@ -38,6 +38,10 @@
         <input type="number" name="estoque" class="form-control" value="{{ old('estoque') }}" required>
     </div>
 
+    <div class="mb-3">
+        <label for="img_url" class="form-label">Imagem do Produto</label>
+        <input type="file" name="img_url" class="form-control" accept="image/*">
+    </div>
     <div class="mb-3">
         <label for="categoria_id" class="form-label">Categoria</label>
         <select class="form-control" name="categoria_id">
