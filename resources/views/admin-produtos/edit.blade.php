@@ -60,8 +60,7 @@
         <img src="{{ asset('storage/' . $produto->img_url) }}" alt="{{ $produto->nome }}" style="max-width: 200px; height: auto;">
     </div>
     @endif
-
-    {{-- Campo para alterar a imagem --}}
+ 
     <div class="mb-3">
         <label for="img_url" class="form-label">Alterar Imagem</label>
         <input type="file" name="img_url" class="form-control" accept="image/*">
