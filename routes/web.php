@@ -32,6 +32,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('/register', [AuthController::class, 'create'])->name('auth.create');
 Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
 
+Route::get('/produtos/inserir-massa', [ProdutoController::class, 'inserirMassa']);
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -69,4 +71,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('pedidos', PedidoController::class);
 
     Route::resource('itens-pedidos', ItensPedidoController::class);
+
 });
