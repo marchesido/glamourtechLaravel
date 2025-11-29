@@ -28,13 +28,13 @@
                     <a class="nav-link {{ request()->routeIs('sobre') ? 'active' : '' }}"
                         href="{{ route('sobre') }}">Sobre</a>
                 </li>
+            </ul>
+            <ul>
                 @auth
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST" class="d-inline">
                         @csrf
-                        <button type="submit"
-                            class="nav-link border-0 bg-transparent"
-                            style="cursor: pointer;">
+                        <button type="submit">
                             Sair
                         </button>
                     </form>
