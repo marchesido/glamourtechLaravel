@@ -8,6 +8,7 @@ use App\Http\Controllers\ItensPedidoController;
 use App\Http\Controllers\PedidoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,11 +21,15 @@ use App\Http\Controllers\ProdutoController;
 */
 
 //Route::get('/', function () {
-    //return view('welcome');
+//return view('welcome');
 //});
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::resource('produtos', ProdutoController::class)->only(['show','index']);
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
+
+Route::resource('produtos', ProdutoController::class)->only(['show', 'index']);
 Route::resource('admin-produtos', AdminProdutoController::class)->parameters(['admin-produtos' => 'produto']);;
 Route::resource('categorias', CategoriaController::class);
 Route::resource('pedidos', PedidoController::class);
@@ -37,3 +42,19 @@ Route::post('/contato', [ContatoController::class, 'store'])->name('contato.stor
 Route::get('/sobre', function () {
     return view('sobre');
 })->name('sobre');
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
+    Route::get('/dashboard', function () {
+        return "Você está logado!";
+    });
+
+    Route::get('/profile', function () {
+        return "Perfil do usuário!";
+    });
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+});
