@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User; // IMPORTANTE
 
 class AuthController extends Controller
 {
@@ -37,5 +38,29 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login');
+    }
+
+    public function create()
+    {
+        return view('auth.register');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name'     => 'nome',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        $user = User::create([
+            'name'     => $request->nome,
+            'email'    => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        Auth::login($user);
+
+        return redirect()->route('home')->with('success', 'Cadastro realizado com sucesso!');
     }
 }

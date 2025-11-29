@@ -29,6 +29,9 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
+Route::get('/register', [AuthController::class, 'create'])->name('auth.create');
+Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
