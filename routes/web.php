@@ -29,20 +29,6 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
-Route::resource('produtos', ProdutoController::class)->only(['show', 'index']);
-Route::resource('admin-produtos', AdminProdutoController::class)->parameters(['admin-produtos' => 'produto']);;
-Route::resource('categorias', CategoriaController::class);
-Route::resource('pedidos', PedidoController::class);
-Route::resource('itens-pedidos', ItensPedidoController::class);
-
-Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
-Route::post('/contato', [ContatoController::class, 'store'])->name('contato.store');
-
-
-Route::get('/sobre', function () {
-    return view('sobre');
-})->name('sobre');
-
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -57,4 +43,27 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
+    Route::get('/sobre', function () {
+        return view('sobre');
+    })->name('sobre');
+
+    Route::post('/contato', [ContatoController::class, 'store'])->name('contato.store');
+
+    Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
+
+    Route::resource('produtos', ProdutoController::class)->only(['show', 'index']);
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::get('/profile', function () {
+        return "Perfil do usuário!";
+    });
+    Route::resource('admin-produtos', AdminProdutoController::class)->parameters(['admin-produtos' => 'produto']);;
+
+    Route::resource('categorias', CategoriaController::class);
+
+    Route::resource('pedidos', PedidoController::class);
+
+    Route::resource('itens-pedidos', ItensPedidoController::class);
 });
