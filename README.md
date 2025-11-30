@@ -109,5 +109,12 @@ Link para o DER: [public\imagens\DER\DER ENVIAR PROFESSOR.jpg]
 
 usando biblioteca: Chart.js
 
+fiz o seeder para function e procedure
+
+para testar o procedure, a rota é produtos/inserir-massa;
+
+
+
 Integrantes
 Douglas Alexandre Marchesi
+
