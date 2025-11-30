@@ -29,6 +29,13 @@
                         href="{{ route('sobre') }}">Sobre</a>
                 </li>
             </ul>
+
+            <div>
+                <a class="btn btn-outline-primary" href="{{ route('cart.show') }}">Carrinho
+                    <span class="badge bg-secondary">{{ array_sum(session()->get('cart', [])) ?: 0 }}</span>
+                </a>
+            </div>
+
             <ul>
                 @auth
                 <li class="nav-item">

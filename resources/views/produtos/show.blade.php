@@ -10,12 +10,18 @@
             <img src="{{ asset('uploads/' . $produto->img_url) }}" class="img-fluid rounded shadow" alt="{{ $produto->nome }}">
         </div>
         <div class="col-md-6">
-            <h2 class="mb-4">{{$produto->nome }}</h2>
+            <h5 class="card-title">{{ $produto->nome }}</h5>
             <p class="fs-5">{{ $produto->descricao }}</p>
-            <p class="fs-5">{{ $produto->preco }}</p>
-            <a href="https://wa.me/44998923204" target="_blank" class="btn btn-success d-inline-flex align-items-center">
-                <i class="bi bi-whatsapp me-2 fs-5"></i> Compre com a gente
-            </a>
+            <p class="card-text">R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
+            <form action="{{ route('cart.add') }}" method="POST" class="mt-auto">
+                @csrf
+                <input type="hidden" name="produto_id" value="{{ $produto->id }}">
+                <div class="input-group">
+                    <input type="number" name="quantidade" min="1" value="1" class="form-control" style="max-width:100px;">
+                    <button class="btn btn-success" type="submit">Adicionar</button>
+                </div>
+                            <p class="text-muted small">Estoque: {{ $produto->estoque }}</p>
+            </form>
         </div>
     </div>
 </div>

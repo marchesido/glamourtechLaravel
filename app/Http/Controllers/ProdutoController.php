@@ -12,7 +12,7 @@ class ProdutoController extends Controller
 
     public function index()
     {
-        $produtos = Produto::all();
+        $produtos = Produto::orderBy('nome')->paginate(12);
         return view('produtos.index', compact('produtos'));
     }
     public function show(Produto $produto)
@@ -40,4 +40,5 @@ class ProdutoController extends Controller
 
         return 'Produtos inseridos com sucesso!';
     }
+    
 }

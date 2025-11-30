@@ -9,6 +9,9 @@ use App\Http\Controllers\PedidoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +60,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
 
     Route::resource('produtos', ProdutoController::class)->only(['show', 'index']);
+
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+    Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+    Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
+
+    Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::get('/pedido/{id}/sucesso', [PedidoController::class, 'sucesso'])->name('pedido.sucesso');
+    Route::get('/pedido/{id}', [PedidoController::class, 'show'])->name('pedido.show');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -71,5 +83,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('pedidos', PedidoController::class);
 
     Route::resource('itens-pedidos', ItensPedidoController::class);
-
 });
