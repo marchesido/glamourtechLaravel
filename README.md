@@ -107,5 +107,7 @@ Estrutura do Banco de Dados
 O projeto utiliza um DER (Diagrama Entidade-Relacionamento) que mostra as tabelas principais (Produtos, Categorias, ItensPedidos, User, Pedido) e seus relacionamentos.
 Link para o DER: [public\imagens\DER\DER ENVIAR PROFESSOR.jpg]
 
+usando biblioteca: Chart.js
+
 Integrantes
 Douglas Alexandre Marchesi
