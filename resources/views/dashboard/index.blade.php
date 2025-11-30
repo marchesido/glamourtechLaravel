@@ -118,8 +118,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    const labels = json_encode($vendasPorDia->keys()->toArray());
-    const valores = json_encode($vendasPorDia->values()->toArray());
+    const labels = {!! json_encode($vendasPorDia->keys()->toArray()) !!};
+    const valores = {!! json_encode($vendasPorDia->values()->toArray()) !!};
 
     // Linha
     new Chart(document.getElementById('graficoLinha'), {
