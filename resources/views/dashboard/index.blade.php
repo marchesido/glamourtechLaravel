@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <h6 class="text-muted">Vendas por Dia (Qtde)</h6>
                     <h3 class="fw-bold text-info">
-                        {{($vendasPorDia) }}
+                        {{ count ($vendasPorDia) }}
                     </h3>
                 </div>
             </div>
