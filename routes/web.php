@@ -11,6 +11,7 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,4 +84,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('pedidos', PedidoController::class);
 
     Route::resource('itens-pedidos', ItensPedidoController::class);
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard');
 });
