@@ -13,6 +13,9 @@ Tecnologias Utilizadas
 php artisan make:model Produto -mcr
 php artisan make:controller AdminProdutoController
 php artisan make:migration add_categoria_id_to_produtos_table --table=produtos
+php artisan migrate:rollback
+-Caso necessário, retornar uma migration anterior
+
 
 Instalação e Execução
 Siga os passos abaixo para executar o sistema localmente:
@@ -29,11 +32,13 @@ php artisan migrate
 php artisan db:seed
 -6	Iniciar o servidor local
 php artisan serve
--7	Caso necessário, retornar uma migration anterior
-php artisan migrate:rollback
 Agora o sistema estará disponível em http://localhost:8000.
 
-Estrutura do Banco de Dados
+-Conta Demonstrativa do Administrador: admin@example.com senha:admin123
+
+-Conta Demonstrativa do usuario: user@example.com senha:12345678
+
+Estrutura do Banco de Dados 
 O projeto utiliza um DER (Diagrama Entidade-Relacionamento) que mostra as tabelas principais (Produtos, Categorias, ItensPedidos, User, Pedido) e seus relacionamentos.
 Link para o DER: [public\imagens\DER\DER ENVIAR PROFESSOR.jpg]
 
