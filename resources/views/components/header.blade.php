@@ -28,26 +28,27 @@
                     <a class="nav-link {{ request()->routeIs('sobre') ? 'active' : '' }}"
                         href="{{ route('sobre') }}">Sobre</a>
                 </li>
-            </ul>
 
-            <div>
-                <a class="btn btn-outline-primary" href="{{ route('cart.show') }}">Carrinho
-                    <span class="badge bg-secondary">{{ array_sum(session()->get('cart', [])) ?: 0 }}</span>
-                </a>
-            </div>
-
-            <ul>
                 @auth
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST" class="d-inline">
                         @csrf
-                        <button type="submit">
+                        <button type="submit" class="nav-link bg-transparent border-0 " style="cursor: pointer;">
                             Sair
                         </button>
                     </form>
                 </li>
                 @endauth
+
             </ul>
+
+            <div>
+                <a class="btn btn-outline-primary" href="{{ route('cart.show') }}">
+                    <i class="bi bi-cart-fill me-2"></i>
+                    Carrinho
+                    <span class="badge bg-light text-dark ms-2">{{ array_sum(session()->get('cart', [])) ?: 0 }}</span>
+                </a>
+            </div>
         </div>
     </div>
 </nav>

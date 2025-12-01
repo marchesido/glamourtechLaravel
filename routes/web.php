@@ -43,13 +43,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
-    Route::get('/dashboard', function () {
-        return "Você está logado!";
-    });
-
-    Route::get('/profile', function () {
-        return "Perfil do usuário!";
-    });
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
     Route::get('/sobre', function () {
